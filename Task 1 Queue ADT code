@@ -1,0 +1,124 @@
+import javax.swing.JOptionPane;
+
+/**Queue is a FIFO(First-in First-out) algorithm
+ @author Abrienne Capricho
+ */
+public class Queue {
+    private int num[];
+    private int front, rear, capacity;
+    
+    /**Constructor which sets the capacity of the Queue to 5*/
+    public Queue() {
+        capacity = 5;
+        num = new int[capacity];
+        front = rear = -1;
+    }
+    
+    /**Constructor which sets the capacity of a Queue based on the user's input
+    @param capacity : int*/
+    public Queue(int capacity) {
+        this.capacity = capacity;
+        num = new int[capacity];
+        front = rear = -1;
+    }
+    
+    /**Method to check if queue is empty
+    @return boolean*/
+    public boolean isEmpty() { 
+        return rear == -1;
+    }
+    
+    /**Method to check if queue is full
+    @return boolean*/
+    public boolean isFull() {
+        return (rear == capacity - 1);
+    }
+    
+    private void errorMessage(String mssg) {
+        JOptionPane.showMessageDialog(null, 
+                mssg, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    /**Method to insert value to the Queue
+    @param data : int*/
+    public void enqueue(int data) {
+        if (isFull()) {
+            errorMessage("Queue is Full!");
+        } else {
+            num[++rear] = data;
+            front = 0;
+        }
+    }
+    
+    /**Method to remove value from the Queue
+    @return : int*/
+    public int dequeue() {
+        int val = 0;
+        if (isEmpty()) {
+            errorMessage("Queue is empty");
+            front = -1;
+        } else {
+            val = num[front];
+            for (int i = 0; i < rear; i++) {
+                num[i] = num[i + 1];
+            }
+            rear--;
+        }
+        return val;
+    }
+    
+    /** Method to display elements of the Queue
+    @return elements : String*/
+    public String display() {
+        String hold = "";
+        if (!isEmpty()) {
+            for (int i = front; i <= rear; i++) {
+                hold += num[i] + " ";
+            }
+        } else {
+            hold = "Queue is empty";
+        }
+        return hold;
+    }
+
+    /** Returns the value at the front of the queue */
+    public int frontValue() {
+        if (!isEmpty()) {
+            return num[front];
+        } else {
+            errorMessage("Queue is empty");
+            return -1; // Error value
+        }
+    }
+
+    /** Returns the value at the rear of the queue */
+    public int rearValue() {
+        if (!isEmpty()) {
+            return num[rear];
+        } else {
+            errorMessage("Queue is empty");
+            return -1; // Error value
+        }
+    }
+
+    /** Returns the value at the front without removing it */
+    public int peek() {
+        return frontValue(); // Same as frontValue
+    }
+
+    /** Returns the number of elements in the queue */
+    public int count() {
+        return rear - front + 1;
+    }
+
+    /** Returns the current capacity of the queue */
+    public int getCapacity() {
+        return capacity;
+    }
+
+    /** Returns the current size (number of elements) of the queue */
+    public int getCurrentSize() {
+        return count();
+    }
+}
+
