@@ -1,0 +1,44 @@
+Task 1.1
+public class TestQueue {
+	public static void main(String[] args) {
+		
+		Queue q=new Queue(5);
+		System.out.println("By: Abrienne Capricho");
+		System.out.println("Empty\t: "+q.isEmpty());
+		System.out.println("Full\t: "+q.isFull());
+		
+		q.enqueue(4);
+		q.enqueue(6);
+		q.enqueue(7);
+		q.enqueue(20);
+		
+		System.out.println(q.display());
+		
+		System.out.println("Empty\t: "+q.isEmpty());
+		System.out.println("Full\t: "+q.isFull());
+	}
+
+} //Abrienne Capricho
+
+Task 1.2
+public class TestQueue {
+	public static void main(String[] args) {
+		
+		Queue q=new Queue(5);
+		System.out.println("By: Abrienne Capricho");
+		System.out.println("Empty\t: "+q.isEmpty());
+		System.out.println("Full\t: "+q.isFull());
+		
+		q.enqueue(4);
+		q.enqueue(6);
+		q.enqueue(7);
+		q.enqueue(20);
+		q.enqueue(8);
+		q.enqueue(50);
+		System.out.println(q.display());
+		
+		System.out.println("Empty\t: "+q.isEmpty());
+		System.out.println("Full\t: "+q.isFull());
+	}
+
+} //Abrienne Capricho
